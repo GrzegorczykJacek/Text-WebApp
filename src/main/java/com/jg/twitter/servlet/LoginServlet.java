@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/login"})
@@ -23,6 +24,8 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         try {
             TbUser tbUser = userService.getUserByUserName(userName, password);
+            HttpSession session = request.getSession();
+            session.setAttribute("currentUser", tbUser); // dodajemy własy atrybut o swojej nazwie currentUser - takich atrybutów mozemy dodać wiele
             response.sendRedirect("/");
         } catch (ImproperLoginCredentials improperLoginCredentials) {
             improperLoginCredentials.printStackTrace();
