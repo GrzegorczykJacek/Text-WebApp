@@ -14,6 +14,9 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/">Home <span
                         class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="${pageContext.request.contextPath}/add-article.jsp">Add article </a>
+            </li>
             <li class="nav-item">
                 <c:choose>
                     <c:when test="${sessionScope.currentUser != null}">
