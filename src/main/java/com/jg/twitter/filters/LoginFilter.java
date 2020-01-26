@@ -19,7 +19,9 @@ public class LoginFilter implements Filter {
         final HttpSession session = request.getSession();
         final TbUser currentUser = (TbUser) session.getAttribute("currentUser");
         if (currentUser == null) {
-            final RequestDispatcher requestDispatcher = req.getRequestDispatcher("login.jsp");
+            final String requestURI = request.getRequestURI();
+            request.setAttribute("currentURI", requestURI); // przekazujemy nowy atrybut do requesta login.jsp
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("login.jsp");
             requestDispatcher.forward(req, response);
         }
         chain.doFilter(req, response);

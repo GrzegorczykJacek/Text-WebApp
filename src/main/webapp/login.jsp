@@ -15,6 +15,7 @@
             <div class="col-md-4 m-auto">
 
                 <form action="login" method="post">
+                    <input type="hidden" name="currentURIfromLoginJSP" value="${currentURI}">
                     <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt=""
                          width="72"
                          height="72">
